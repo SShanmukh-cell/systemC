@@ -21,5 +21,4 @@ SC_MODULE(half_adder){
 		sensitive << clk.pos();
 		sensitive << clr.pos();
 	}
-
 };	
