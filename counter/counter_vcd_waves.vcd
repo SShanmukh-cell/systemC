@@ -1,0 +1,370 @@
+$date
+     Mar 16, 2023       11:26:37
+$end
+
+$version
+              SystemC 2.3.0_pub_rev_20111121-OSCI --- Mar 13 2023 10:47:00
+$end
+
+$timescale
+     1 ps
+$end
+
+$scope module SystemC $end
+$var wire    1  aaa  trace_clk       $end
+$var wire    1  aab  trace_clr       $end
+$var wire    4  aac  trace_count [3:0]  $end
+$upscope $end
+$enddefinitions  $end
+
+$comment
+All initial values are dumped below at time 0 sec = 0 timescale units.
+$end
+
+$dumpvars
+1aaa
+1aab
+b0 aac
+$end
+
+#5000
+0aaa
+
+#10000
+1aaa
+
+#15000
+0aaa
+
+#20000
+1aaa
+
+#25000
+0aaa
+
+#30000
+1aaa
+
+#35000
+0aaa
+
+#40000
+1aaa
+
+#45000
+0aaa
+
+#50000
+1aaa
+0aab
+b1 aac
+
+#55000
+0aaa
+
+#60000
+1aaa
+b10 aac
+
+#65000
+0aaa
+
+#70000
+1aaa
+b11 aac
+
+#75000
+0aaa
+
+#80000
+1aaa
+b100 aac
+
+#85000
+0aaa
+
+#90000
+1aaa
+b101 aac
+
+#95000
+0aaa
+
+#100000
+1aaa
+b110 aac
+
+#105000
+0aaa
+
+#110000
+1aaa
+b111 aac
+
+#115000
+0aaa
+
+#120000
+1aaa
+b1000 aac
+
+#125000
+0aaa
+
+#130000
+1aaa
+b1001 aac
+
+#135000
+0aaa
+
+#140000
+1aaa
+b1010 aac
+
+#145000
+0aaa
+
+#150000
+1aaa
+b1011 aac
+
+#155000
+0aaa
+
+#160000
+1aaa
+b1100 aac
+
+#165000
+0aaa
+
+#170000
+1aaa
+b1101 aac
+
+#175000
+0aaa
+
+#180000
+1aaa
+b1110 aac
+
+#185000
+0aaa
+
+#190000
+1aaa
+b1111 aac
+
+#195000
+0aaa
+
+#200000
+1aaa
+b0 aac
+
+#205000
+0aaa
+
+#210000
+1aaa
+b1 aac
+
+#215000
+0aaa
+
+#220000
+1aaa
+b10 aac
+
+#225000
+0aaa
+
+#230000
+1aaa
+b11 aac
+
+#235000
+0aaa
+
+#240000
+1aaa
+b100 aac
+
+#245000
+0aaa
+
+#250000
+1aaa
+1aab
+b0 aac
+
+#255000
+0aaa
+
+#260000
+1aaa
+
+#265000
+0aaa
+
+#270000
+1aaa
+
+#275000
+0aaa
+
+#280000
+1aaa
+
+#285000
+0aaa
+
+#290000
+1aaa
+
+#295000
+0aaa
+
+#300000
+1aaa
+0aab
+b1 aac
+
+#305000
+0aaa
+
+#310000
+1aaa
+b10 aac
+
+#315000
+0aaa
+
+#320000
+1aaa
+b11 aac
+
+#325000
+0aaa
+
+#330000
+1aaa
+b100 aac
+
+#335000
+0aaa
+
+#340000
+1aaa
+b101 aac
+
+#345000
+0aaa
+
+#350000
+1aaa
+b110 aac
+
+#355000
+0aaa
+
+#360000
+1aaa
+b111 aac
+
+#365000
+0aaa
+
+#370000
+1aaa
+b1000 aac
+
+#375000
+0aaa
+
+#380000
+1aaa
+b1001 aac
+
+#385000
+0aaa
+
+#390000
+1aaa
+b1010 aac
+
+#395000
+0aaa
+
+#400000
+1aaa
+b1011 aac
+
+#405000
+0aaa
+
+#410000
+1aaa
+b1100 aac
+
+#415000
+0aaa
+
+#420000
+1aaa
+b1101 aac
+
+#425000
+0aaa
+
+#430000
+1aaa
+b1110 aac
+
+#435000
+0aaa
+
+#440000
+1aaa
+b1111 aac
+
+#445000
+0aaa
+
+#450000
+1aaa
+b0 aac
+
+#455000
+0aaa
+
+#460000
+1aaa
+b1 aac
+
+#465000
+0aaa
+
+#470000
+1aaa
+b10 aac
+
+#475000
+0aaa
+
+#480000
+1aaa
+b11 aac
+
+#485000
+0aaa
+
+#490000
+1aaa
+b100 aac
+
+#495000
+0aaa
+

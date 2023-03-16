@@ -1,0 +1,2 @@
+Good Morning! 
+sum of a, b, c is: 18.46
