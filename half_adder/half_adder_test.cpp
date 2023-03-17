@@ -1,11 +1,10 @@
 #include "half_adder.cpp"
-#include "const.h"
-
 
 
 SC_MODULE(half_adder_test){
 
-	sc_signal<sc_uint<1>> a, b, sum, carry;
+	sc_signal<sc_bv<data_width>> a, b, sum;
+        sc_signal<sc_logic> carry;
 	sc_signal<bool> clr;
 	sc_clock clk;
 
@@ -50,9 +49,9 @@ void half_adder_test::stimulus(){
         srand(time(NULL));
 	while(true){
 		clr.write(rand() % 2);
-		a.write(rand() % 2);
-		b.write(rand() % 2);
-		cout << " clk = " << clk.read() << " clr = " << clr.read() << " input_a = " << a.read() << " input_b = " << b.read() << " sum = " << sum.read() << " carry = " << carry << endl;
+		a.write(rand() % (1 << data_width));      ///// 1 << data_width is nothing but: 1 * 2^data_width: will give me random valuw between 0 to 2^datawidth-1 
+		b.write(rand() % (1 << data_width));       ///////// if data _width is 4 than : randomize between 0 to 2^4-1 i.e 0 to 15 
+		cout << " clr = " << clr.read() << " input_a = " << a.read() << " input_b = " << b.read() << " sum = " << sum.read() << " carry = " << carry << endl;
 		wait(tp);
 	}
 }
@@ -60,7 +59,7 @@ void half_adder_test::stimulus(){
 
 int sc_main(int agrc, char* argv[]){
 	half_adder_test test("h_test");
-	sc_start(30*tp);
+	sc_start(15*tp);
 	sc_stop();
 	return 0;
 }

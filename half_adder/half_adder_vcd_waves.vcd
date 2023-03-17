@@ -1,5 +1,5 @@
 $date
-     Mar 16, 2023       17:46:06
+     Mar 17, 2023       13:11:08
 $end
 
 $version
@@ -13,9 +13,9 @@ $end
 $scope module SystemC $end
 $var wire    1  aaa  clear       $end
 $var wire    1  aab  clk       $end
-$var wire    1  aac  input_a       $end
-$var wire    1  aad  input_b       $end
-$var wire    1  aae  sum       $end
+$var wire    4  aaaac  input_a [3:0]  $end
+$var wire    4  aaaad  input_b [3:0]  $end
+$var wire    4  aaaae  sum [3:0]  $end
 $var wire    1  aaf  carry       $end
 $upscope $end
 $enddefinitions  $end
@@ -25,11 +25,11 @@ All initial values are dumped below at time 0 sec = 0 timescale units.
 $end
 
 $dumpvars
-0aaa
+1aaa
 1aab
-0aac
-1aad
-1aae
+b1011 aaaac
+b1010 aaaad
+b0 aaaae
 0aaf
 $end
 
@@ -37,7 +37,11 @@ $end
 0aab
 
 #10000
+0aaa
 1aab
+b0 aaaac
+b1100 aaaad
+b1100 aaaae
 
 #15000
 0aab
@@ -45,8 +49,9 @@ $end
 #20000
 1aaa
 1aab
-0aad
-0aae
+b10 aaaac
+b1011 aaaad
+b0 aaaae
 
 #25000
 0aab
@@ -54,8 +59,9 @@ $end
 #30000
 0aaa
 1aab
-1aad
-1aae
+b1000 aaaac
+b101 aaaad
+b1101 aaaae
 
 #35000
 0aab
@@ -63,204 +69,100 @@ $end
 #40000
 1aaa
 1aab
-1aac
-0aad
-0aae
+b11 aaaac
+b1101 aaaad
+b0 aaaae
 
 #45000
 0aab
 
 #50000
 1aab
+b0 aaaac
+b1011 aaaad
 
 #55000
 0aab
 
 #60000
 1aab
-0aac
-1aad
+b111 aaaac
+b0 aaaad
 
 #65000
 0aab
 
 #70000
-0aaa
 1aab
-1aae
+b100 aaaad
 
 #75000
 0aab
 
 #80000
+0aaa
 1aab
-0aad
-0aae
+b1101 aaaac
+b110 aaaad
+b11 aaaae
+1aaf
 
 #85000
 0aab
 
 #90000
-1aaa
 1aab
-1aad
+b1 aaaac
+b1 aaaad
+b10 aaaae
+0aaf
 
 #95000
 0aab
 
 #100000
+1aaa
 1aab
+b10 aaaac
+b1100 aaaad
+b0 aaaae
 
 #105000
 0aab
 
 #110000
-0aaa
 1aab
-1aac
-1aaf
+b110 aaaac
 
 #115000
 0aab
 
 #120000
-1aaa
 1aab
-0aac
-0aaf
+b1001 aaaac
+b1111 aaaad
 
 #125000
 0aab
 
 #130000
+0aaa
 1aab
-0aad
+b1101 aaaac
+b111 aaaad
+b100 aaaae
+1aaf
 
 #135000
 0aab
 
 #140000
-1aab
-1aad
-
-#145000
-0aab
-
-#150000
-1aab
-1aac
-
-#155000
-0aab
-
-#160000
-1aab
-0aac
-
-#165000
-0aab
-
-#170000
-1aab
-
-#175000
-0aab
-
-#180000
-0aaa
-1aab
-0aad
-
-#185000
-0aab
-
-#190000
-1aab
-1aac
-1aae
-
-#195000
-0aab
-
-#200000
 1aaa
 1aab
-0aac
-1aad
-0aae
-
-#205000
-0aab
-
-#210000
-1aab
-0aad
-
-#215000
-0aab
-
-#220000
-0aaa
-1aab
-
-#225000
-0aab
-
-#230000
-1aab
-1aac
-1aae
-
-#235000
-0aab
-
-#240000
-1aab
-0aac
-0aae
-
-#245000
-0aab
-
-#250000
-1aaa
-1aab
-1aac
-1aad
-
-#255000
-0aab
-
-#260000
-0aaa
-1aab
-1aaf
-
-#265000
-0aab
-
-#270000
-1aab
-0aac
-1aae
+b1010 aaaad
+b0 aaaae
 0aaf
 
-#275000
-0aab
-
-#280000
-1aaa
-1aab
-0aad
-0aae
-
-#285000
-0aab
-
-#290000
-1aab
-1aad
-
-#295000
+#145000
 0aab
 
