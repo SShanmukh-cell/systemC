@@ -1,5 +1,5 @@
 $date
-     Mar 17, 2023       13:11:08
+     Mar 17, 2023       15:07:37
 $end
 
 $version
@@ -25,144 +25,138 @@ All initial values are dumped below at time 0 sec = 0 timescale units.
 $end
 
 $dumpvars
-1aaa
+0aaa
 1aab
-b1011 aaaac
-b1010 aaaad
+b0 aaaac
+b0 aaaad
 b0 aaaae
 0aaf
 $end
 
 #5000
+1aaa
 0aab
+b111 aaaac
+b1000 aaaad
 
 #10000
-0aaa
 1aab
-b0 aaaac
-b1100 aaaad
-b1100 aaaae
 
 #15000
 0aab
+b0 aaaad
 
 #20000
-1aaa
 1aab
-b10 aaaac
-b1011 aaaad
-b0 aaaae
 
 #25000
 0aab
+b110 aaaac
+b1001 aaaad
 
 #30000
-0aaa
 1aab
-b1000 aaaac
-b101 aaaad
-b1101 aaaae
 
 #35000
 0aab
+b0 aaaac
+b101 aaaad
 
 #40000
-1aaa
 1aab
-b11 aaaac
-b1101 aaaad
-b0 aaaae
 
 #45000
 0aab
+b1 aaaac
+b1111 aaaad
 
 #50000
 1aab
-b0 aaaac
-b1011 aaaad
 
 #55000
+0aaa
 0aab
+b0 aaaac
+b1110 aaaad
 
 #60000
 1aab
-b111 aaaac
-b0 aaaad
+b1110 aaaae
 
 #65000
+1aaa
 0aab
+b1010 aaaac
+b111 aaaad
+b0 aaaae
 
 #70000
 1aab
-b100 aaaad
 
 #75000
 0aab
+b0 aaaac
+b1001 aaaad
 
 #80000
-0aaa
 1aab
-b1101 aaaac
-b110 aaaad
-b11 aaaae
-1aaf
 
 #85000
+0aaa
 0aab
+b1110 aaaac
+b100 aaaad
 
 #90000
 1aab
-b1 aaaac
-b1 aaaad
 b10 aaaae
-0aaf
+1aaf
 
 #95000
 0aab
+b110 aaaad
 
 #100000
-1aaa
 1aab
-b10 aaaac
-b1100 aaaad
-b0 aaaae
+b100 aaaae
 
 #105000
-0aab
-
-#110000
-1aab
-b110 aaaac
-
-#115000
-0aab
-
-#120000
-1aab
-b1001 aaaac
-b1111 aaaad
-
-#125000
-0aab
-
-#130000
-0aaa
-1aab
-b1101 aaaac
-b111 aaaad
-b100 aaaae
-1aaf
-
-#135000
-0aab
-
-#140000
 1aaa
-1aab
-b1010 aaaad
+0aab
+b1011 aaaac
+b1101 aaaad
 b0 aaaae
 0aaf
 
-#145000
+#110000
+1aab
+
+#115000
 0aab
+b1111 aaaac
+b101 aaaad
+
+#120000
+1aab
+
+#125000
+0aab
+b1110 aaaac
+b1011 aaaad
+
+#130000
+1aab
+
+#135000
+0aab
+b1 aaaac
+
+#140000
+1aab
+
+#145000
+0aaa
+0aab
+b11 aaaac
+b1101 aaaad
 

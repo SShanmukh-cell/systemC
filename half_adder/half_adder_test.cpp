@@ -46,6 +46,7 @@ SC_MODULE(half_adder_test){
 
 void half_adder_test::stimulus(){
 
+	wait(tp/2);
         srand(time(NULL));
 	while(true){
 		clr.write(rand() % 2);

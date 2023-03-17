@@ -9,21 +9,22 @@ SC_MODULE(half_adder){
 	sc_in<bool> clr, clk;
 
 	void h_adder(){
+		sc_bv<data_width> a0 = a.read();   /// 
+		sc_bv<data_width> b0 = b.read();
+		sc_bv<data_width> s0, c0;
+		sc_logic c;
+		        
+                int i;
+
+
 		if(clr){
 			sum.write(0);
-			carry.write(SC_LOGIC_0);
+			carry.write(SC_LOGIC_0);  /// if the data type is sc_logic that writing false or 0 will throw an error, so we give SC_LOGIC_0/SC_LOGIC_1/SC_LOGIC_X/SC_LOGIC_Z
 		}
 		else {
-			sc_bv<data_width> a0 = a.read();
-		        sc_bv<data_width> b0 = b.read();
-		        sc_bv<data_width> s0, c0;
-		        sc_logic c;
-		        
-			int i;
-
-		        for( i = 0; i < data_width; i++){
+			for( i = 0; i < data_width; i++){
 				if(i == 0){
-					s0[i] = a0[i] ^ b0[i];    ///////// i === 0 i.e first bit 
+					s0[i] = a0[i] ^ b0[i];    ///////// i === 0 i.e only for the first bit since we dont have carry here as input 
 		                        c0[i] = a0[i] & b0[i];
 				}
 			        else{
