@@ -1,6 +1,5 @@
 #include <systemc.h>
 #include "const.h"
-//#include "f_adder.h"
 
 
 SC_MODULE(full_adder){
@@ -30,8 +29,7 @@ SC_MODULE(full_adder){
 				}
 			        else{
 				        s0[i] = a0[i] ^ b0[i] ^ cout[i-1];
-	                                cout[i] = (a0[i] & b0[i]) | (a0[i] & cout[i-1]) | (b0[i] & cout[i-1]);
-				        //c = cout[i];
+	                                cout[i] = (a0[i] & b0[i]) | (a0[i] & cout[i-1]) | (b0[i] & cout[i-1]);				        /
 			        }
 	                        c = cout[i];            ///// here since c is logic and cout is bit vectir, we have to extract a perticular bit from cout and assign it to c. 
 			}
