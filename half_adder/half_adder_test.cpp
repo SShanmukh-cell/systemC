@@ -51,8 +51,9 @@ void half_adder_test::stimulus(){
 	while(true){
 		clr.write(rand() % 2);
 		a.write(rand() % (1 << data_width));      ///// 1 << data_width is nothing but: 1 * 2^data_width: will give me random valuw between 0 to 2^datawidth-1 
-		b.write(rand() % (1 << data_width));       ///////// if data _width is 4 than : randomize between 0 to 2^4-1 i.e 0 to 15 
-		cout << " clr = " << clr.read() << " input_a = " << a.read() << " input_b = " << b.read() << " sum = " << sum.read() << " carry = " << carry << endl;
+		b.write(rand() % (1 << data_width));       ///////// if data _width is 4 than : randomize between 0 to 2^4-1 i.e 0 to 15
+                sc_bv<data_width> second_inp = b.read(); 
+		cout << " clr = " << clr.read() << " input_a = " << a.read() << " input_b = " << second_inp[0] << " sum = " << sum.read() << " carry = " << carry << endl;
 		wait(tp);
 	}
 }

@@ -28,14 +28,13 @@ SC_MODULE(half_adder){
 		                        c0[i] = a0[i] & b0[i];
 				}
 			        else{
-				        s0[i] = a0[i] ^ b0[i] ^ c0[i-1];
-		                        c0[i] = (a0[i] & b0[i]) | (a0[i] & c0[i-1]) | (c0[i-1] & b0[i]);
-				        c = c0[i];
+					b0[i] = c0[i-1];
+				        s0[i] = a0[i] ^ b0[i];
+		                        c0[i] = a0[i] & b0[i];				        
 			        }
+				c = c0[i];
 			}
 	
-
-
 			sum.write(s0);
 			carry.write(c);
 		}
