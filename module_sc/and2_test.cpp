@@ -39,7 +39,7 @@ SC_MODULE(and2_test){
 
 	~and2_test(){
 		sc_close_vcd_trace_file(pTracefile);
-	}
+	}       ////  here ~ is known as destructor operator of module which is a member function of and2_test module that is automatically called by systemc framework. It performs any necessary cleanups like closing file, freeing memory, or releasing resources.
 };
 
 
