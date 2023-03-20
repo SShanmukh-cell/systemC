@@ -42,7 +42,7 @@ SC_MODULE(full_adder_test){
 
 	~full_adder_test(){
 		sc_close_vcd_trace_file(pTracefile);
-	}
+	}   ////  here ~ is known as destructor operator of module which is a member function of full_adder_test module that is automatically called by systemc framework. It performs any necessary cleanups like closing file, freeing memory, or releasing resources.
 };
 
 
