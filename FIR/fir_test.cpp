@@ -42,13 +42,13 @@ void fir_test::stimulus(){
 
 	wait(tp/2);
 	srand(time(NULL));
-	//while (true){
+	while (true){
 		rst.write(rand() % 2);
-		//inp.write(rand() % (1 << data_size));
-		inp.write(95);
+		inp.write((rand() % (1 << 3)) + 10);
+		//inp.write(95);
 		cout << "Input is " << inp.read() << ", FIR filter output is " << outp.read() << endl;
 		wait(tp);
-//	}
+	}
 }
 
 
