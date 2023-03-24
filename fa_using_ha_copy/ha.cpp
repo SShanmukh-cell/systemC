@@ -8,14 +8,14 @@ SC_MODULE(HalfAdder) {
     sc_in<bool> clk, reset;
 
     void half_adder_process() {
-	   /* if(reset){
+	    if(reset){
 		    sum.write(0);
 		    carry.write(0);
 	    }
-	    else {*/
+	    else {
 		    sum.write(a.read() ^ b.read());        // XOR gate for sum
                     carry.write(a.read() & b.read());     // AND gate for carry
-	   // }
+	    }
     }
 
     SC_CTOR(HalfAdder) {
