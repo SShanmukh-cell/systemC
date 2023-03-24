@@ -74,12 +74,11 @@ void FA_TEST::stimulus(){
 		cout << "start" <<endl;
 		reset.write(rand() % 2);
 		for(int i = 0; i<n_bit;i++){
-			a[i] = rand() % 2;
-		        b[i] = rand() % 2;
+			a[i].write(rand() % 2);
+		        b[i].write(rand() % 2);
 		
-		//cout << "a = " << a[i].read() << " b = " << b[i].read() << " sum = " << sum[i].read() << " c_out = " << c_out.read() << endl;
 		}
-		c_in = rand() % 2;
+		c_in.write(rand() % 2);
 		cout << "a = ";
 		for(int i = n_bit-1; i>=0 ; i--){
 			cout << a[i];
@@ -105,9 +104,6 @@ void FA_TEST::stimulus(){
 
 
 		cout << "end " << endl;
-		//c_in.write(rand() % (1<<n_bit));
-		//cout << "a = " << a.read() << " b = " << b.read() << " sum = " << sum.read() << " c_out = " << c_out.read() << endl;
-		//cout << "a = " << a.read() << " b = " << b.read() << " c_in = " << c_in.read() << " sum = " << sum.read() << " c_out = " << c_out.read() << endl;
 		wait(tp);
 	}
 }
