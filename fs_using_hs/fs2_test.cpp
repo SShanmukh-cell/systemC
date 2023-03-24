@@ -55,12 +55,7 @@ SC_MODULE(FS_TEST){
     }
 
     ~FS_TEST(){
-	    //sc_close_vcd_trace_file(pTracefile);
-	    /*for(i = 0; i<n_bit; i++){
-			delete FS[i];
-		}*/
-	    //delete subtractor;
-	    
+	    //sc_close_vcd_trace_file(pTracefile);	    
     }
 };
 
@@ -76,8 +71,6 @@ void FS_TEST::stimulus(){
 		for(int i = 0; i<n_bit;i++){
 			a[i] = rand() % 2;
 		        b[i] = rand() % 2;
-		
-		//cout << "a = " << a[i].read() << " b = " << b[i].read() << " difference = " << difference[i].read() << " borrow_out = " << borrow_out.read() << endl;
 		}
 		c_in = rand() % 2;
 		cout << "a = ";
@@ -105,9 +98,6 @@ void FS_TEST::stimulus(){
 
 
 		cout << "end " << endl;
-		//c_in.write(rand() % (1<<n_bit));
-		//cout << "a = " << a.read() << " b = " << b.read() << " difference = " << difference.read() << " borrow_out = " << borrow_out.read() << endl;
-		//cout << "a = " << a.read() << " b = " << b.read() << " c_in = " << c_in.read() << " difference = " << difference.read() << " borrow_out = " << borrow_out.read() << endl;
 		wait(tp);
 	}
 }
