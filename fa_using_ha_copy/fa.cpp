@@ -12,12 +12,16 @@ SC_MODULE(FullAdder) {
 
     HalfAdder* ha1;
     HalfAdder* ha2;
+   // HalfAdder ha1, ha2;
 
     void full_adder_process() {	    
 	c_out.write(carry_1.read() | carry_0.read());
     }
 
-    SC_CTOR(FullAdder) {
+    SC_CTOR(FullAdder)/*:
+	    ha1("ha1"),
+            ha2("ha2")*/
+       	{
 
 	    ha1 = new HalfAdder("ha1");
             ha2 = new HalfAdder("ha2");
@@ -35,6 +39,22 @@ SC_MODULE(FullAdder) {
             ha2->carry(carry_1);
 	    ha2->clk(clk);
 	    ha2->reset(reset);
+
+	
+	   /* ha1.a(a);
+            ha1.b(b);
+            ha1.sum(sum_i);
+            ha1.carry(carry_0);
+	    ha1.clk(clk);
+	    ha1.reset(reset);
+
+            ha2.a(sum_i);
+            ha2.b(c_in);
+            ha2.sum(sum);
+            ha2.carry(carry_1);
+	    ha2.clk(clk);
+	    ha2.reset(reset);*/
+
 
 	
             SC_METHOD(full_adder_process);
