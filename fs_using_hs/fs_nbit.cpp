@@ -13,7 +13,7 @@ SC_MODULE(N_FullSubtractor){
 	int i;
 
 	/*void n_fulladder_func(){
-		//borrow_out.write(temp_borrow.read());					
+		//					
 	}*/
 
 
@@ -45,12 +45,7 @@ SC_MODULE(N_FullSubtractor){
 			
 		}
 		//SC_METHOD(n_fulladder_func);
-	}
-
-	/*~N_FullSubtractor(){
-		for(i = 0; i<n_bit; i++){
-			delete FS[i];
-		}*/	
+	}	
 };
 
 
