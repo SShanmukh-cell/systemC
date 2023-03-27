@@ -10,11 +10,12 @@ SC_MODULE(FS_TEST){
     sc_signal<sc_bv<1>> borrow_out;
 
     // Instantiate the N-bit subtractor
-    //sc_trace_file *pTracefile;
+    sc_trace_file *pTracefile;
 
     N_FullSubtractor* subtractor;
 
 
+    int i;
     void stimulus();
 
 
@@ -27,7 +28,7 @@ SC_MODULE(FS_TEST){
             subtractor->clk(clk);
             subtractor->reset(reset);
 
-	    for(int i = 0; i< n_bit; i++){
+	    for(i = 0; i< n_bit; i++){
 		    subtractor->a[i](a[i]);
             	    subtractor->b[i](b[i]);
             	    subtractor->difference[i](difference[i]);
@@ -36,26 +37,13 @@ SC_MODULE(FS_TEST){
 	    subtractor->c_in(c_in);
 	    subtractor->borrow_out(borrow_out);
 
-	   
-
-            //Open VCD file
-           /*pTracefile = sc_create_vcd_trace_file("waveforms");
 	    
-            sc_trace(pTracefile, clk, "clk");
-            sc_trace(pTracefile, reset, "reset");
-	    for(int i = 0; i< n_bit; i++){
-                sc_trace(pTracefile, a[i], "a"+ std::to_string(i));
-                sc_trace(pTracefile, b[i], "b"+ std::to_string(i));
-                sc_trace(pTracefile, difference[i], "difference"+ std::to_string(i));
-	    }
-            sc_trace(pTracefile, c_in, "c_in");
-            sc_trace(pTracefile, borrow_out, "borrow_out");*/
 
 	    SC_THREAD(stimulus);
     }
 
     ~FS_TEST(){
-	    //sc_close_vcd_trace_file(pTracefile);	    
+	    sc_close_vcd_trace_file(pTracefile);	    
     }
 };
 
@@ -94,10 +82,30 @@ void FS_TEST::stimulus(){
 
 		cout << " borrow_out = " << borrow_out.read() << endl;
 		cout << " reset = " << reset.read() << endl;
-
-
-
 		cout << "end " << endl;
+		
+
+
+		//////////////////////////////////////////  adding singals to waveform ////////////////////////////////////////////////
+                sc_bv<n_bit> a0, b0, diff0;
+
+	        pTracefile = sc_create_vcd_trace_file("fs_waveforms");
+	        for(int i = 0; i< n_bit; i++){
+			a0[i] = a[i].read().get_bit(0);   ///// gets the 0th bit of ith index of a
+		        b0[i] = b[i].read().get_bit(0);
+		        diff0[i] = difference[i].read().get_bit(0);
+	        }
+
+                sc_trace(pTracefile, clk, "clk");
+                sc_trace(pTracefile, reset, "reset");
+	        sc_trace(pTracefile, a0, "trace_a");
+	        sc_trace(pTracefile, b0, "trace_b");
+	        sc_trace(pTracefile, diff0, "trace_diff0");
+                sc_trace(pTracefile, c_in, "c_in");
+                sc_trace(pTracefile, borrow_out, "borrow_out");
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 		wait(tp);
 	}
 }

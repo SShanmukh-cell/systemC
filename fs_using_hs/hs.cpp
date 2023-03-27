@@ -22,6 +22,7 @@ SC_MODULE(HalfSubtractor) {
         SC_METHOD(half_subtractor_process);
         sensitive << a << b;
 	sensitive << clk.pos();
+	sensitive << reset.pos();
     }
 };
 
