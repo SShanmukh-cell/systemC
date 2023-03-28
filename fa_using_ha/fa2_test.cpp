@@ -10,7 +10,7 @@ SC_MODULE(FA_TEST){
     sc_signal<sc_bv<1>> c_out;
 
     // Instantiate the N-bit adder
-    //sc_trace_file *pTracefile;
+    sc_trace_file *pTracefile;
 
     N_FullAdder* adder;
 
@@ -36,30 +36,12 @@ SC_MODULE(FA_TEST){
 	    adder->c_in(c_in);
 	    adder->c_out(c_out);
 
-	   
-
-            //Open VCD file
-           /*pTracefile = sc_create_vcd_trace_file("waveforms");
-	    
-            sc_trace(pTracefile, clk, "clk");
-            sc_trace(pTracefile, reset, "reset");
-	    for(int i = 0; i< n_bit; i++){
-                sc_trace(pTracefile, a[i], "a"+ std::to_string(i));
-                sc_trace(pTracefile, b[i], "b"+ std::to_string(i));
-                sc_trace(pTracefile, sum[i], "sum"+ std::to_string(i));
-	    }
-            sc_trace(pTracefile, c_in, "c_in");
-            sc_trace(pTracefile, c_out, "c_out");*/
 
 	    SC_THREAD(stimulus);
     }
 
     ~FA_TEST(){
-	    //sc_close_vcd_trace_file(pTracefile);
-	    /*for(i = 0; i<n_bit; i++){
-			delete FA[i];
-		}*/
-	    //delete adder;
+	    sc_close_vcd_trace_file(pTracefile);
 	    
     }
 };
@@ -100,10 +82,27 @@ void FA_TEST::stimulus(){
 
 		cout << " c_out = " << c_out.read() << endl;
 		cout << " reset = " << reset.read() << endl;
-
-
-
 		cout << "end " << endl;
+		
+		/////////////////////////////////////////  adding singals to waveform ////////////////////////////////////////////////
+                sc_bv<n_bit> a0, b0, sum0;
+
+	        pTracefile = sc_create_vcd_trace_file("fa_waveforms");
+	        for(int i = 0; i< n_bit; i++){
+			a0[i] = a[i].read().get_bit(0);   ///// gets the 0th bit of ith index of a
+		        b0[i] = b[i].read().get_bit(0);
+		        sum0[i] = sum[i].read().get_bit(0);
+	        }
+
+                sc_trace(pTracefile, clk, "clk");
+                sc_trace(pTracefile, reset, "reset");
+	        sc_trace(pTracefile, a0, "trace_a");
+	        sc_trace(pTracefile, b0, "trace_b");
+	        sc_trace(pTracefile, sum0, "trace_sum0");
+                sc_trace(pTracefile, c_in, "c_in");
+                sc_trace(pTracefile, c_out, "c_out");
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 		wait(tp);
 	}
 }
