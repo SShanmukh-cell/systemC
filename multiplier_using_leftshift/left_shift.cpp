@@ -4,35 +4,38 @@
 
 SC_MODULE(left_shift_N) {
 	sc_in<sc_bv<N>> inp;
-	sc_in<sc_bv<4>> shift_by;
+	sc_in<sc_bv<N>> shift_by;
 	sc_out<sc_bv<N+N>> out;
-	sc_in<bool> clk;
+	sc_in<bool> clk, rst;
 
 	void left_shift_func(){
-		sc_bv<N+N> inp0;
-		sc_bv<4> shift0;
+		sc_bv<N+N> temp0;
+		sc_bv<N> shift0;
 		int i, j;
 
 		shift0 = shift_by.read();
-
-		if(shift0 == 0b0){
-			out.write(inp.read());
+		if(rst){
+			out.write(0);
 		}
 		else {
-			inp0 = inp.read();
-			
-			sc_uint<4> s;
-			s = shift0;
-			for(j = N-1; j >= 0; j--){
-				inp0[j+s] = inp0[j];
-				if(j==0) {
-					for(i = s-1; i >= 0; i--){
-						inp0[i] = 0;
-					}
-				}
+			if(shift0 == 0b0){
+				out.write(inp.read());
 			}
+			else {
+				temp0 = inp.read();
 			
-			out.write(inp0);
+				sc_uint<N> s;
+				s = shift0;
+				for(j = N-1; j >= 0; j--){
+					temp0[j+s] = temp0[j];
+					if(j==0) {
+						for(i = s-1; i >= 0; i--){
+							temp0[i] = 0;
+						}
+					}
+				}			
+				out.write(temp0);
+			}
 		}			
 	}
 
