@@ -15,12 +15,13 @@ SC_MODULE(left_shift_N) {
 		int i, j;
 
 		shift0 = shift_by.read();
-		valid_high = valid.read();
+		valid_high = valid.read();    /// here i am using valid for two purpose, 1. for left shift so that code can be more flexible and reusable to get the output for only perticular instance 
+					      //                                         2. for multiplier(in this case) so that i can get the output only when the multiplier bit is high, 0 otherwise
 		if(rst){
 			out.write(0);
 		}
 		else {
-			if(valid_high != 0b0){
+			if(valid_high != 0b0){     //  here i am using valid as active high. NOTE: remember to code the multiplier with active high valid 
 				if(shift0 == 0b0){
 					out.write(inp.read());
 				}
@@ -30,9 +31,9 @@ SC_MODULE(left_shift_N) {
 					sc_uint<N> s;
 					s = shift0;
 					for(j = N-1; j >= 0; j--){
-						temp0[j+s] = temp0[j];
+						temp0[j+s] = temp0[j];     //  directly taking all the input bits and shifting it by s/shift0/shift_by bits
 						if(j==0) {
-							for(i = s-1; i >= 0; i--){
+							for(i = s-1; i >= 0; i--){     // this for loop is for the bits which are shifted and need to be assigned with 0 (from lsb bits)
 								temp0[i] = 0;
 							}
 						}
@@ -40,7 +41,7 @@ SC_MODULE(left_shift_N) {
 					out.write(temp0);
 				}
 			}
-			else{
+			else{                                    ////  if not valid give the output 0
 				out.write(0);
 			}
 

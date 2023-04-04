@@ -18,7 +18,7 @@ SC_MODULE(half_adder){
 			s0 = 0;
 		}
 		else {
-			s0 = sc_biguint<N+N+N>(a0) + sc_biguint<N+N+N>(b0);
+			s0 = sc_biguint<N+N+N>(a0) + sc_biguint<N+N+N>(b0);    //// i am using this type of direct integer addition so that the connection between the modules doesnt get complicated and none of the carry bits overriden in any scenario/condition.
 		}
 		sum.write(s0);
 	}
