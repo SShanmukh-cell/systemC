@@ -46,11 +46,7 @@ SC_MODULE(multiplier_test){
 };
 
 void multiplier_test::stimulus(){
-	/*rst.write(1);
-	wait(tp);
-	rst.write(0);
-	wait(tp);*/
-	//srand(time(NULL));
+	srand(time(NULL));
 	while(true){
 		rst.write(rand() % 2);
 		multiplicand = rand() % (1 << N);
