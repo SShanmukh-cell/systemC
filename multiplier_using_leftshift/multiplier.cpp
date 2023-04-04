@@ -1,4 +1,3 @@
-#include "left_shift.cpp"
 #include "ha.cpp"
 
 SC_MODULE(multiplier_N) {                            ///  code is flexible in N bit input which can be changed from const.h
