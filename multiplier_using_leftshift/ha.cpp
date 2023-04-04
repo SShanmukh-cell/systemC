@@ -1,4 +1,4 @@
-#include <systemc.h>
+#include "left_shift.cpp"
 
 
 SC_MODULE(half_adder){
