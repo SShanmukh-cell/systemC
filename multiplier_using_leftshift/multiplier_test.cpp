@@ -16,7 +16,11 @@ SC_MODULE(multiplier_test){
 	void stimulus();
 
 	SC_CTOR(multiplier_test):
-		clk("clk", tp)
+		clk("mul_test_clk", tp),
+		multiplicand("mul_test_multiplicand"),
+		multiplier("mul_test_multiplier"),
+		product("mul_test_product"),
+		rst("mul_test_rst")
 	{
 		mul = new multiplier_N("mul");
 		mul->clk(clk);
@@ -46,13 +50,13 @@ void multiplier_test::stimulus(){
 	wait(tp);
 	rst.write(0);
 	wait(tp);*/
-	srand(time(NULL));
+	//srand(time(NULL));
 	while(true){
-		rst.write(0);
+		rst.write(rand() % 2);
 		multiplicand = rand() % (1 << N);
 		multiplier = rand() % (1 << N);
-		cout << "rst = " << hex << rst.read() << " multiplicand = " << hex << multiplicand.read() << " multiplier = " << hex << multiplier.read() << " product = " << hex << product.read() << endl;
-		cout << "rst = " << rst.read() << " multiplicand = " << multiplicand.read() << " multiplier = " << multiplier.read() << " product = " << product.read() << endl;
+		cout << "rst = " << hex << rst.read() << " multiplicand = " << hex << multiplicand.read() << " multiplier = " << hex << multiplier.read() << " product_dut = " << hex << product.read() << endl;
+		//cout << "rst = " << rst.read() << " multiplicand = " << multiplicand.read() << " multiplier = " << multiplier.read() << " product = " << product.read() << endl;
 		wait(tp);
 	}
 }
