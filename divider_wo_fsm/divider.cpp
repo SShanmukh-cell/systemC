@@ -39,7 +39,7 @@ SC_MODULE(divider_N) {                            ///  code is flexible in N bit
 			cerr << "Enter valid divisor" << endl;
 		}
 		else {       
-       			for(i = 0; i < sc_uint<N>(D); i++){                        //// this for loop if for i can left shift divisor and get close to the actuall divisor(so that i cont multiply and check for all possible divisor starting from 0
+       			for(i = 0; i < sc_uint<N>(D); i++){                        //// this for: i can left shift divisor and get close to the actuall divisor(so that i cont multiply and check for all possible divisor starting from 0
           			if(sc_uint<N+N>(temp_d << 1) < sc_uint<N>(D)) {
             				temp_d = temp_d << 1; 					
             				incr = sc_uint<N>(incr) + 1;					
