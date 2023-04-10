@@ -1,4 +1,3 @@
-//#include "fa.cpp"
 #include "fa_nbit.cpp"
 
 
@@ -6,11 +5,9 @@ SC_MODULE(FA_TEST){
 
     sc_clock clk;
     sc_signal<sc_bv<n_bit>> a, b;
-    sc_signal<sc_bv<1>> c_in;
-	
+    sc_signal<sc_bv<1>> c_in;	
     sc_signal<sc_bv<1>> c_out;
-    //sc_signal<sc_bv<n_bit>> sum;
-    sc_signal<sc_bv<1>> sum[n_bit];
+    sc_signal<sc_bv<n_bit>> sum;
     sc_signal<bool> reset;
 
     // Instantiate the N-bit adder
@@ -26,7 +23,7 @@ SC_MODULE(FA_TEST){
 	    a("fa_test_a"),
 	    b("fa_test_b"),
 	    c_in("fa_test_cin"),
-	    //sum("fa_test_sum"),
+	    sum("fa_test_sum"),
 	    c_out("fa_test_c_out"),
 	    reset("fa_test_reset"),
 	    clk("clk", tp)
@@ -37,16 +34,25 @@ SC_MODULE(FA_TEST){
             adder->clk(clk);
             adder->reset(reset);
 	    adder->a(a);
-            adder->b(b);
-
-	    for(int i = 0; i< n_bit; i++){
-		    
-            	    adder->sum[i](sum[i]);
-	    }
-	    //adder->sum(sum);
-
+            adder->b(b);	    
+	    adder->sum(sum);
 	    adder->c_in(c_in);
 	    adder->c_out(c_out);
+
+
+
+	    /////////////////////////////////////////  adding singals to waveform ////////////////////////////////////////////////
+                
+	    pTracefile = sc_create_vcd_trace_file("Nbit_full_Adder_waves");
+                
+	    sc_trace(pTracefile, a, "trace_a");
+	    sc_trace(pTracefile, b, "trace_b");
+	    sc_trace(pTracefile, sum, "trace_sum");
+	    sc_trace(pTracefile, clk, "clk");
+            sc_trace(pTracefile, reset, "reset");
+            sc_trace(pTracefile, c_in, "c_in");
+            sc_trace(pTracefile, c_out, "c_out");
+	    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 	    SC_THREAD(stimulus);
@@ -60,15 +66,12 @@ SC_MODULE(FA_TEST){
 
 
 void FA_TEST::stimulus(){
-
 	
 	//wait(tp/2);
-	srand(time(NULL));
-	//reset.write(1);
+	srand(time(NULL));	
 	int k;
 	k = 0;
-	while (true){
-		//cout << "start" <<endl;
+	while (true){		
 		reset.write(rand() % 2);
 		
 		a.write(rand() % (1 << n_bit));
@@ -76,40 +79,11 @@ void FA_TEST::stimulus(){
 		c_in.write(rand() % 2);
 		k++;
 		
-		
-
+		cout << " " << endl;
 		cout << "********************************  test run " << k << " ***********************************" << endl;
 		cout << " " << endl;
-		cout << "rst = " << hex << reset.read() << " a = " << hex << a.read() << " b = " << hex << b.read() << " c_in = " << hex << c_in.read() << " c_out = " << hex << c_out.read() << endl;
-		
-		
-		
-		cout << "sum = ";
-		for(int i = n_bit-1; i>=0 ; i--){
-			cout << sum[i];
-		}
-		cout << " " << endl;
-		
-		//cout << "end " << endl;
-		
-		/////////////////////////////////////////  adding singals to waveform ////////////////////////////////////////////////
-                sc_bv<n_bit> a0, b0, sum0;
-
-	        pTracefile = sc_create_vcd_trace_file("fa_waveforms");
-	        for(int i = 0; i< n_bit; i++){			
-		        sum0[i] = sum[i].read().get_bit(0);
-	        }
-
-                
-	        sc_trace(pTracefile, a, "trace_a");
-	        sc_trace(pTracefile, b, "trace_b");
-	        sc_trace(pTracefile, sum0, "trace_sum");
-		sc_trace(pTracefile, clk, "clk");
-                sc_trace(pTracefile, reset, "reset");
-                sc_trace(pTracefile, c_in, "c_in");
-                sc_trace(pTracefile, c_out, "c_out");
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+		cout << "rst = " << hex << reset.read() << "; a = " << hex << a.read() << "; b = " << hex << b.read() << "; c_in = " << hex << c_in.read() << "; sum = " << sum.read() << "; c_out = " << hex << c_out.read() << endl;
+				
 		wait(tp);
 	}
 }
