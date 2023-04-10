@@ -3,10 +3,10 @@
 
 
 SC_MODULE(divider_test){
-	sc_signal<sc_bv<N>> dividend;
-	sc_signal<sc_bv<N>> divisor;
-	sc_signal<sc_bv<N>> quotient;
-	sc_signal<sc_bv<N>> remainder;
+	sc_signal<sc_biguint<N>> dividend;
+	sc_signal<sc_biguint<N>> divisor;
+	sc_signal<sc_biguint<N>> quotient;
+	sc_signal<sc_biguint<N>> remainder;
 
 	sc_signal<bool> rst;
 	sc_clock clk;
