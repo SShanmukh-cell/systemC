@@ -54,8 +54,8 @@ void divider_test::stimulus(){
 	srand(time(NULL));
 	while(true){
 		rst.write(rand() % 2);
-		dividend = rand() % (1 << N);
-		divisor = rand() % (1 << N);
+		dividend.write(rand());
+		divisor.write(rand());
 		//dividend = 65535;
 		//divisor = 6;
 		cout << "rst = " << hex << rst.read() << " dividend = " << hex << dividend.read() << " divisor = " << hex << divisor.read() << " quotient_dut = " << hex << quotient.read() << " remainder_dut = " << hex << remainder.read() << endl;
