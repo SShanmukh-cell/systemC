@@ -14,18 +14,18 @@ SC_MODULE(N_FullAdder){
         sc_signal<sc_bv<1>> sig_sum[n_bit];
 
 
-	void n_fulladder_func(){
+	void n_fulladder_func(){                             ///  in this function i am reading the input and writing to some local variable and again reading the varible and writing to signal which is an array 
 		sc_bv<n_bit> a0, b0;
 		a0 = a.read();
 		b0 = b.read();
 	        		
 		for(j = 0; j < n_bit; j++){
-			sig_a[j] = a0[j].get_bit(0);
+			sig_a[j] = a0[j].get_bit(0);          //  get the jth bit from a variable and write to signal so that we can do bit by bit adder operation
 			sig_b[j] = b0[j].get_bit(0);
 		}
 	}
 
-	void n_sum_func(){
+	void n_sum_func(){                                //// in this function i am reading the sum signal value storing in 1 bit temp sum and again reading the temp_sum writing to sum(in vector), and finallly writing the complete vector sum to output port sum
 		sc_bv<n_bit> sum_vec;
 		sc_bv<1> sum_temp;
 			
@@ -46,14 +46,14 @@ SC_MODULE(N_FullAdder){
 	    	clk("faN_clk"),
 	    	reset("faN_reset")
 	{
-		SC_METHOD(n_fulladder_func);
+		SC_METHOD(n_fulladder_func);      // function is sensitive to pos-clk, pos-reset, and input a, b, cin
 		sensitive << clk.pos();
 		sensitive << reset.pos();
 		sensitive << a << b << c_in;
 
 
 		FullAdder* FA[n_bit];
-		for(i = 0; i<n_bit; i++){
+		for(i = 0; i<n_bit; i++){             ///  signal connections 
 			FA[i] = new FullAdder(sc_gen_unique_name("FA"));
 			FA[i]->a(sig_a[i]);
 			FA[i]->b(sig_b[i]);
@@ -66,7 +66,7 @@ SC_MODULE(N_FullAdder){
 				
 			}
 
-			FA[i]->sum(sig_sum[i]);
+			FA[i]->sum(sig_sum[i]);      //  storing the value of sum in signal so that i can take all the bits in array and make a complete sum vector (done in n_sum_func function)
 
 			if(i==n_bit-1){
 				FA[i]->c_out(c_out);
@@ -81,7 +81,7 @@ SC_MODULE(N_FullAdder){
 		}
 
 		SC_METHOD(n_sum_func);
-		for(int l = 0; l < n_bit; l++){
+		for(int l = 0; l < n_bit; l++){       //  function is sensitive to only sum signal which is an array
 			sensitive << sig_sum[l];
 		}
 	}
