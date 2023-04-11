@@ -3,9 +3,9 @@
 
 
 SC_MODULE(multiplier_test){
-	sc_signal<sc_bv<N>> multiplicand;
-	sc_signal<sc_bv<N>> multiplier;
-	sc_signal<sc_bv<N+N+N>> product;
+	sc_signal<sc_biguint<N>> multiplicand;
+	sc_signal<sc_biguint<N>> multiplier;
+	sc_signal<sc_biguint<N+N+N>> product;
 	sc_signal<bool> rst;
 	sc_clock clk;
 

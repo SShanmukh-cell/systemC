@@ -2,15 +2,15 @@
 
 
 SC_MODULE(half_adder){
-	sc_in<sc_bv<N+N+N>> a;
-	sc_in<sc_bv<N+N>> b;
-        sc_out<sc_bv<N+N+N>> sum;
+	sc_in<sc_biguint<N+N+N>> a;
+	sc_in<sc_biguint<N+N>> b;
+        sc_out<sc_biguint<N+N+N>> sum;
 	sc_in<bool> rst, clk;
 
 	void h_adder(){
-		sc_bv<N+N+N> a0 = a.read();    
-		sc_bv<N+N+N> b0 = b.read();
-		sc_bv<N+N+N> s0;		        
+		sc_biguint<N+N+N> a0 = a.read();    
+		sc_biguint<N+N+N> b0 = b.read();
+		sc_biguint<N+N+N> s0;		        
                 int i;
 
 

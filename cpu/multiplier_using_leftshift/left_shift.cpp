@@ -3,11 +3,11 @@
 
 
 SC_MODULE(left_shift_N) {
-	sc_in<sc_bv<N>> inp;
-	sc_in<sc_bv<N>> shift_by;
-	sc_out<sc_bv<N+N>> out;
+	sc_in<sc_biguint<N>> inp;
+	sc_in<sc_biguint<N>> shift_by;
+	sc_out<sc_biguint<N+N>> out;
 	sc_in<bool> clk, rst;
-	sc_in<sc_bv<N>> valid;
+	sc_in<sc_biguint<N>> valid;
 
 	void left_shift_func(){
 		sc_bv<N+N> temp0;

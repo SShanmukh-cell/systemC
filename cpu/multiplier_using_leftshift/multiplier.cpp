@@ -1,17 +1,17 @@
 #include "ha.cpp"
 
 SC_MODULE(multiplier_N) {                            ///  code is flexible in N bit input which can be changed from const.h
-	sc_in<sc_bv<N>> multiplicand;
-	sc_in<sc_bv<N>> multiplier;
-	sc_out<sc_bv<N+N+N>> product;
+	sc_in<sc_biguint<N>> multiplicand;
+	sc_in<sc_biguint<N>> multiplier;
+	sc_out<sc_biguint<N+N+N>> product;
 	sc_in<bool> clk, rst;
 
 	int i, j, k;
 	
-	sc_signal<sc_bv<N+N>> ls_out[N];
-	sc_signal<sc_bv<N+N+N>> temp_product[N];
-	sc_signal<sc_bv<N>> shift0[N];
-	sc_signal<sc_bv<N>> valid1[N];
+	sc_signal<sc_biguint<N+N>> ls_out[N];
+	sc_signal<sc_biguint<N+N+N>> temp_product[N];
+	sc_signal<sc_biguint<N>> shift0[N];
+	sc_signal<sc_biguint<N>> valid1[N];
 
 
 	void multiplier_func(){
