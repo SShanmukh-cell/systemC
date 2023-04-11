@@ -1,16 +1,16 @@
 #include "fs.cpp"
 
 SC_MODULE(N_FullSubtractor){
-	sc_in<sc_bv<n_bit>> a, b;
-	sc_in<sc_bv<1>> c_in;
+	sc_in<sc_biguint<n_bit>> a, b;
+	sc_in<sc_biguint<1>> c_in;
 	
-        sc_out<sc_bv<1>> borrow_out;
-        sc_out<sc_bv<n_bit>> difference;
+        sc_out<sc_biguint<1>> borrow_out;
+        sc_out<sc_biguint<n_bit>> difference;
         sc_in<bool> clk, reset;
 
-	sc_signal<sc_bv<1>> temp_borrow[n_bit];
-	sc_signal<sc_bv<1>> sig_a[n_bit], sig_b[n_bit];
-        sc_signal<sc_bv<1>> sig_difference[n_bit];
+	sc_signal<sc_biguint<1>> temp_borrow[n_bit];
+	sc_signal<sc_biguint<1>> sig_a[n_bit], sig_b[n_bit];
+        sc_signal<sc_biguint<1>> sig_difference[n_bit];
 	
 	int i, j, k;
 
@@ -26,7 +26,7 @@ SC_MODULE(N_FullSubtractor){
 	}
 
 	void n_difference_func(){                                //// in this function i am reading the difference signal value storing in 1 bit temp difference and again reading the temp_diff writing to difference(in vector), and finallly writing the complete vector difference to output port difference
-		sc_bv<n_bit> difference_vec;
+		sc_biguint<n_bit> difference_vec;
 		sc_bv<1> difference_temp;
 			
 		for(k = 0; k < n_bit; k++){

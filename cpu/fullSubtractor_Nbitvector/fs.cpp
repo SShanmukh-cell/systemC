@@ -1,13 +1,13 @@
 #include "hs.cpp"
 
 SC_MODULE(FullSubtractor) {
-    sc_in<sc_bv<1>> a, b, c_in;
-    sc_out<sc_bv<1>> borrow_out;
-    sc_out<sc_bv<1>> difference;
+    sc_in<sc_biguint<1>> a, b, c_in;
+    sc_out<sc_biguint<1>> borrow_out;
+    sc_out<sc_biguint<1>> difference;
     sc_in<bool> clk, reset;
 
-    sc_signal<sc_bv<1>> difference_i;
-    sc_signal<sc_bv<1>> borrow_0, borrow_1;
+    sc_signal<sc_biguint<1>> difference_i;
+    sc_signal<sc_biguint<1>> borrow_0, borrow_1;
 
     HalfSubtractor* hs1;
     HalfSubtractor* hs2;

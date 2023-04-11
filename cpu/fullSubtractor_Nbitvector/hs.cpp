@@ -3,8 +3,8 @@
 
 
 SC_MODULE(HalfSubtractor) {
-    sc_in<sc_bv<1>> a, b;
-    sc_out<sc_bv<1>> difference, borrow;
+    sc_in<sc_biguint<1>> a, b;
+    sc_out<sc_biguint<1>> difference, borrow;
     sc_in<bool> clk, reset;
 
     void half_subtractor_process() {

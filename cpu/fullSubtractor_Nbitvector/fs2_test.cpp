@@ -5,10 +5,10 @@
 SC_MODULE(FS_TEST){
 
     sc_clock clk;
-    sc_signal<sc_bv<n_bit>> a, b;
-    sc_signal<sc_bv<1>> c_in;	
-    sc_signal<sc_bv<1>> borrow_out;
-    sc_signal<sc_bv<n_bit>> difference;
+    sc_signal<sc_biguint<n_bit>> a, b;
+    sc_signal<sc_biguint<1>> c_in;	
+    sc_signal<sc_biguint<1>> borrow_out;
+    sc_signal<sc_biguint<n_bit>> difference;
     sc_signal<bool> reset;
 
     // Instantiate the N-bit adder
