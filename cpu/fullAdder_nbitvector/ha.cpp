@@ -3,8 +3,8 @@
 
 // Half Adder module
 SC_MODULE(HalfAdder) {
-    sc_in<sc_bv<1>> a, b;
-    sc_out<sc_bv<1>> sum, carry;
+    sc_in<sc_biguint<1>> a, b;
+    sc_out<sc_biguint<1>> sum, carry;
     sc_in<bool> clk, reset;
 
     void half_adder_process() {

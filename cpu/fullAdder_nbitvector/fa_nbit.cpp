@@ -1,17 +1,17 @@
 #include "fa.cpp"
 
 SC_MODULE(N_FullAdder){
-	sc_in<sc_bv<n_bit>> a, b;
-        sc_in<sc_bv<1>>	c_in;	
-        sc_out<sc_bv<1>> c_out;
-        sc_out<sc_bv<n_bit>> sum;
+	sc_in<sc_biguint<n_bit>> a, b;
+        sc_in<sc_biguint<1>> c_in;	
+        sc_out<sc_biguint<1>> c_out;
+        sc_out<sc_biguint<n_bit>> sum;
         sc_in<bool> clk, reset;
 	
 	int i, j, k;
 
-	sc_signal<sc_bv<1>> carry[n_bit];
-	sc_signal<sc_bv<1>> sig_a[n_bit], sig_b[n_bit];
-        sc_signal<sc_bv<1>> sig_sum[n_bit];
+	sc_signal<sc_biguint<1>> carry[n_bit];
+	sc_signal<sc_biguint<1>> sig_a[n_bit], sig_b[n_bit];
+        sc_signal<sc_biguint<1>> sig_sum[n_bit];
 
 
 	void n_fulladder_func(){                             ///  in this function i am reading the input and writing to some local variable and again reading the varible and writing to signal which is an array 
@@ -26,7 +26,7 @@ SC_MODULE(N_FullAdder){
 	}
 
 	void n_sum_func(){                                //// in this function i am reading the sum signal value storing in 1 bit temp sum and again reading the temp_sum writing to sum(in vector), and finallly writing the complete vector sum to output port sum
-		sc_bv<n_bit> sum_vec;
+		sc_biguint<n_bit> sum_vec;
 		sc_bv<1> sum_temp;
 			
 		for(k = 0; k < n_bit; k++){

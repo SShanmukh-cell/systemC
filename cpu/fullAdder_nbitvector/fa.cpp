@@ -2,13 +2,13 @@
 
 // Full Adder module
 SC_MODULE(FullAdder) {
-    sc_in<sc_bv<1>> a, b, c_in;
-    sc_out<sc_bv<1>> c_out;
-    sc_out<sc_bv<1>> sum;
+    sc_in<sc_biguint<1>> a, b, c_in;
+    sc_out<sc_biguint<1>> c_out;
+    sc_out<sc_biguint<1>> sum;
     sc_in<bool> clk, reset;
 
-    sc_signal<sc_bv<1>> sum_i;
-    sc_signal<sc_bv<1>> carry_0, carry_1;
+    sc_signal<sc_biguint<1>> sum_i;
+    sc_signal<sc_biguint<1>> carry_0, carry_1;
 
     HalfAdder* ha1;
     HalfAdder* ha2;

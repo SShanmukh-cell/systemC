@@ -4,10 +4,10 @@
 SC_MODULE(FA_TEST){
 
     sc_clock clk;
-    sc_signal<sc_bv<n_bit>> a, b;
-    sc_signal<sc_bv<1>> c_in;	
-    sc_signal<sc_bv<1>> c_out;
-    sc_signal<sc_bv<n_bit>> sum;
+    sc_signal<sc_biguint<n_bit>> a, b;
+    sc_signal<sc_biguint<1>> c_in;	
+    sc_signal<sc_biguint<1>> c_out;
+    sc_signal<sc_biguint<n_bit>> sum;
     sc_signal<bool> reset;
 
     // Instantiate the N-bit adder
@@ -74,7 +74,7 @@ void FA_TEST::stimulus(){
 	while (true){		
 		reset.write(rand() % 2);
 		
-		a.write(rand());
+		a.write(/*rand()*/4294967295);
 		b.write(rand());
 		c_in.write(rand() % 2);
 		k++;
