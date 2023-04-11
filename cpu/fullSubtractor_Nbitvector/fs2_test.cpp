@@ -75,8 +75,8 @@ void FS_TEST::stimulus(){
 	while (true){		
 		reset.write(rand() % 2);
 		
-		a.write(rand() % (1 << n_bit));
-		b.write(rand() % (1 << n_bit));
+		a.write(rand());
+		b.write(rand());
 		c_in.write(rand() % 2);
 		k++;
 		
