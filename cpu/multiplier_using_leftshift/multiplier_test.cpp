@@ -49,10 +49,9 @@ void multiplier_test::stimulus(){
 	srand(time(NULL));
 	while(true){
 		rst.write(rand() % 2);
-		multiplicand = rand() % (1 << N);
-		multiplier = rand() % (1 << N);
+		multiplicand.write(rand());
+		multiplier.write(rand());
 		cout << "rst = " << hex << rst.read() << " multiplicand = " << hex << multiplicand.read() << " multiplier = " << hex << multiplier.read() << " product_dut = " << hex << product.read() << endl;
-		//cout << "rst = " << rst.read() << " multiplicand = " << multiplicand.read() << " multiplier = " << multiplier.read() << " product = " << product.read() << endl;
 		wait(tp);
 	}
 }
