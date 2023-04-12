@@ -3,8 +3,8 @@
 
 
 SC_MODULE(right_shift) {
-	sc_in<sc_bv<N>> inp;	
-	sc_out<sc_bv<N>> out;
+	sc_in<sc_biguint<N>> inp;	
+	sc_out<sc_biguint<N>> out;
 	
 
 	void right_shift_func(){
@@ -13,7 +13,7 @@ SC_MODULE(right_shift) {
 		int i, j;
 
 		inp0 = inp.read();
-		for(i = N-2; i>=0; i++){
+		for(i = N-1; i>=0; i++){
 			if(i==N-1) out0[i] = 0;
 			else out0[i] = inp0[i+1];
 		}
