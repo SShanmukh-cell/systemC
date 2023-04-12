@@ -81,9 +81,11 @@ void divider_test::stimulus(){
 	divisor.write(805);
 	wait(tp*2);
 	req.write(0);
-	//wait(); // Wait for any event
+	//wait(ready.read() == true); // Wait for any event
+	//wait();
         //if (ready.read() == true) {
 	cout << "rst = " << hex << rst.read() << " dividend = " << hex << dividend.read() << " divisor = " << hex << divisor.read() << " Q_dut = " << hex << Q.read() << " R_dut = " << hex << R.read() << endl;
+	wait();
 	//}
 
 }
@@ -91,7 +93,7 @@ void divider_test::stimulus(){
 
 int sc_main(int argc, char* argv[]){
 	divider_test test("test");
-	sc_start(30*tp);
+	sc_start(300*tp);
 	sc_stop();
 	return 0;
 }
