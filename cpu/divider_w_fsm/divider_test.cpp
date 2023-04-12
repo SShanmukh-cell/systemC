@@ -87,7 +87,6 @@ void divider_test::stimulus(){
 	cout << "rst = " << hex << rst.read() << " dividend = " << hex << dividend.read() << " divisor = " << hex << divisor.read() << " Q_dut = " << hex << Q.read() << " R_dut = " << hex << R.read() << endl;
 	wait();
 	//}
-
 }
 
 
