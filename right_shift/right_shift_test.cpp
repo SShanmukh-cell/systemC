@@ -4,7 +4,7 @@
 
 SC_MODULE(right_shift_test){
 	sc_signal<sc_bv<N>> inp;
-	sc_signal<sc_bv<4>> shift_by;
+	sc_signal<sc_bv<S>> shift_by;
 	sc_signal<sc_bv<N>> out;
 	sc_clock clk;
 
@@ -40,8 +40,8 @@ SC_MODULE(right_shift_test){
 void right_shift_test::stimulus(){
 	srand(time(NULL));
 	while(true){
-		inp.write(rand() % (1 << N));
-		shift_by.write(rand() % (1 << 4));
+		inp.write(rand() );
+		shift_by.write(rand() % (1 << S));
 		cout << "input = " << inp.read() << " shift_r_by = " << shift_by.read() << " output = " << out.read() << endl;
 		wait(tp);
 	}
