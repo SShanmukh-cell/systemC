@@ -4,7 +4,7 @@
 
 SC_MODULE(left_shift_test){
 	sc_signal<sc_bv<N>> inp;
-	sc_signal<sc_bv<4>> shift_by;
+	sc_signal<sc_bv<S>> shift_by;
 	sc_signal<sc_bv<N+N>> out;
 	sc_clock clk;
 
@@ -40,9 +40,10 @@ SC_MODULE(left_shift_test){
 void left_shift_test::stimulus(){
 	srand(time(NULL));
 	while(true){
-		inp.write(rand() % (1 << N));
-		shift_by.write(rand() % (1 << 4));
-		cout << "input = " << inp.read() << " shift_r_by = " << shift_by.read() << " output = " << out.read() << endl;
+		inp.write(rand()/* % (1 << N)*/);
+		shift_by.write(rand() % (1 << S));
+		cout << "input = " << hex << inp.read() << " shift_r_by = " << hex << shift_by.read() << " output = " << hex << out.read() << endl;
+		//cout << "input = " << inp.read() << " shift_r_by = " << shift_by.read() << " output = " << out.read() << endl;
 		wait(tp);
 	}
 }

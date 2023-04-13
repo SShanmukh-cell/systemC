@@ -3,13 +3,13 @@
 
 SC_MODULE(left_shift_N) {
 	sc_in<sc_bv<N>> inp;
-	sc_in<sc_bv<4>> shift_by;
+	sc_in<sc_bv<S>> shift_by;
 	sc_out<sc_bv<N+N>> out;
 	sc_in<bool> clk;
 
 	void left_shift_func(){
 		sc_bv<N+N> inp0;
-		sc_bv<4> shift0;
+		sc_bv<S> shift0;
 		int i, j;
 
 		shift0 = shift_by.read();
@@ -20,7 +20,7 @@ SC_MODULE(left_shift_N) {
 		else {
 			inp0 = inp.read();
 			
-			sc_uint<4> s;
+			sc_uint<S> s;
 			s = shift0;
 			for(j = N-1; j >= 0; j--){
 				inp0[j+s] = inp0[j];
