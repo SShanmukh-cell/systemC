@@ -4,13 +4,13 @@
 
 SC_MODULE(right_shift_N) {
 	sc_in<sc_bv<N>> inp;
-	sc_in<sc_bv<4>> shift_by;
+	sc_in<sc_bv<S>> shift_by;
 	sc_out<sc_bv<N>> out;
 	sc_in<bool> clk;
 
 	void right_shift_func(){
 		sc_bv<N> inp0;
-		sc_bv<4> shift0;
+		sc_bv<S> shift0;
 		int i, j;
 
 		shift0 = shift_by.read();
@@ -21,11 +21,11 @@ SC_MODULE(right_shift_N) {
 		else {
 			inp0 = inp.read();
 			
-			sc_uint<4> s;
+			sc_uint<S> s;
 			s = shift0;
 			for(i = 0; i < s; i++){
 				for(j = 0; j < N; j++){
-					if(j!=15){
+					if(j!=N-1){
 						inp0[j] = inp0[j+1];
 					}
 					else {
