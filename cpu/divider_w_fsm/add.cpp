@@ -1,4 +1,4 @@
-#include "sub.cpp"
+//#include "sub.cpp"
 
 
 SC_MODULE(add) {
@@ -14,7 +14,7 @@ SC_MODULE(add) {
 
 		o0 = a0 + b0;
 
-		O.write(o0);
+		O.write(A.read() + B.read());
 	}
 
 	SC_CTOR(add):
@@ -22,6 +22,7 @@ SC_MODULE(add) {
 		B("add_b"),
 		O("add_o")
 	{
-		SC_METHOD(add_func);		
+		SC_METHOD(add_func);	
+		sensitive << A << B;	
 	}
 };

@@ -1,4 +1,4 @@
-#include "right_shift.cpp"
+//#include "right_shift.cpp"
 
 
 SC_MODULE(greater_equal) {
@@ -27,6 +27,7 @@ SC_MODULE(greater_equal) {
 		G("ge_g"),
 		E("ge_e")
 	{
-		SC_METHOD(greater_equal_func);		
+		SC_METHOD(greater_equal_func);	
+		sensitive << A << B;	
 	}
 };

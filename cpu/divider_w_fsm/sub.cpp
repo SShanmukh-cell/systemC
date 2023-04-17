@@ -1,4 +1,4 @@
-#include "mul.cpp"
+
 
 
 SC_MODULE(sub) {
@@ -22,6 +22,7 @@ SC_MODULE(sub) {
 		B("sub_b"),
 		O("sub_o")
 	{
-		SC_METHOD(sub_func);		
+		SC_METHOD(sub_func);	
+		sensitive << A << B;	
 	}
 };

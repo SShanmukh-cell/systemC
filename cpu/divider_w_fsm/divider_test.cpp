@@ -62,37 +62,29 @@ SC_MODULE(divider_test){
 };
 
 void divider_test::stimulus(){
-	/*srand(time(NULL));
+	srand(time(NULL));
+	
 	while(true){
-		rst.write(rand() % 2);
+		rst.write(1);
+		wait(2*tp);
+		rst.write(0);
+		req.write(1);
 		dividend.write(rand());
 		divisor.write(rand());
-		//dividend = 65535;
-		//divisor = 6;
-		cout << "rst = " << hex << rst.read() << " dividend = " << hex << dividend.read() << " divisor = " << hex << divisor.read() << " Q_dut = " << hex << Q.read() << " R_dut = " << hex << R.read() << endl;
-		
-		wait(tp);
-	}*/
-	rst.write(1);
-	wait(2*tp);
-	rst.write(0);
-	req.write(1);
-	dividend.write(65535);
-	divisor.write(805);
-	wait(tp*2);
-	req.write(0);
-	//wait(ready.read() == true); // Wait for any event
-	//wait();
-        //if (ready.read() == true) {
-	cout << "rst = " << hex << rst.read() << " dividend = " << hex << dividend.read() << " divisor = " << hex << divisor.read() << " Q_dut = " << hex << Q.read() << " R_dut = " << hex << R.read() << endl;
-	wait();
-	//}
+		wait(tp*2);
+		req.write(0);
+		while(ready.read() == 0){ // Wait for any event
+			wait(tp);
+        	}
+		cout << "current time stamp is " << sc_time_stamp() << " rst = "  << rst.read() << " dividend = " << dividend.read() << " divisor = " << divisor.read() << " Q_dut = " << Q.read() << " R_dut = " << R.read() << endl;
+	}
+	
 }
 
 
 int sc_main(int argc, char* argv[]){
 	divider_test test("test");
-	sc_start(300*tp);
+	sc_start(100*tp);
 	sc_stop();
 	return 0;
 }

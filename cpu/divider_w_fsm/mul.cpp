@@ -1,4 +1,4 @@
-#include "greater_equal.cpp"
+
 
 
 SC_MODULE(mul) {
@@ -22,6 +22,7 @@ SC_MODULE(mul) {
 		B("mul_b"),
 		O("mul_o")
 	{
-		SC_METHOD(mul_func);		
+		SC_METHOD(mul_func);	
+		sensitive << A << B;	
 	}
 };

@@ -1,4 +1,11 @@
+#include <systemc.h>
+#include "const.h"
+#include "mul.cpp"
+#include "sub.cpp"
 #include "add.cpp"
+#include "right_shift.cpp"
+#include "greater_equal.cpp"
+
 
 
 SC_MODULE(divider_N) {                            ///  code is flexible in N bit input which can be changed from const.h
@@ -47,8 +54,7 @@ SC_MODULE(divider_N) {                            ///  code is flexible in N bit
             					Num_cycles = 1;
           				} 
 					else {
-						s = COMPARE;
-            					//Data
+						s = COMPARE;            					
             					refD = dividend.read();
             					refd = divisor.read();
             					D = dividend.read();
@@ -64,10 +70,8 @@ SC_MODULE(divider_N) {                            ///  code is flexible in N bit
      			} 
 			else if(s == COMPARE) {
 				Num_cycles = Num_cycles + 1;
-        			if((e==1) || (g==1)){
-          				// divisor =< Divid}
-          				D = Dr;
-          				//Counter = (Counter == 0) ? 1 : Counter << 1;//Bug: Counter << 1;
+        			if((e==1) || (g==1)){          				
+          				D = Dr;          			
 					if(Counter == 0) {
 						Counter = 1;
 					}
@@ -75,17 +79,14 @@ SC_MODULE(divider_N) {                            ///  code is flexible in N bit
 						Counter = Counter << 1;
 					}
         			}
-				else {
-          				// divisor > Divid}          
-          				if(Counter != 0) {
-            					//RefCounter = RefCounter + Counter;
+				else {          				          
+          				if(Counter != 0) {            					
             					RefCounter = temp3;
-            					Counter = 0;
-            					//D = refD - refd*Counter;
+            					Counter = 0;            					
             					D = temp2;
             					refD = temp2;        
-          				} else { 
-            					/// Sum of Counter values will be output.
+          				} 
+          				else {             					
              					Q.write(RefCounter);
              					ready = 1;
              					s = START;
@@ -108,6 +109,11 @@ SC_MODULE(divider_N) {                            ///  code is flexible in N bit
 		rst("div_rst"),
 		clk("div_clk")
 	{	
+		SC_METHOD(divider_func);
+		sensitive << clk.pos();
+		sensitive << rst.pos(); 
+		
+		
 		greater_equal* ge_i;                            
 		ge_i = new greater_equal("ge_i");
 		ge_i->A(D);
@@ -116,9 +122,9 @@ SC_MODULE(divider_N) {                            ///  code is flexible in N bit
 		ge_i->E(e);
 
 		
-		SC_METHOD(divider_func);
+		/*SC_METHOD(divider_func);
 		sensitive << clk.pos();
-		sensitive << rst.pos();
+		sensitive << rst.pos();*/
 		
 		
 		mul* mul_i;                            
